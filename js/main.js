@@ -1,7 +1,7 @@
 /* ==========================================================================
    PENPLOT PARTNERS CONSTRUCTION
    Master Corporate Dynamic JavaScript Logic with Background Puzzle Assembly
-   Location: Abuja, FCT, Nigeria
+   Operating Scope: Nationwide Nigeria (Operating Offices: Abuja & Lagos)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusMessages = [
       { threshold: 20, text: 'Assembling Site Grid Tiles...' },
       { threshold: 45, text: 'Locking Structural Blueprints...' },
-      { threshold: 75, text: 'FCDA Compliance & Site Verification...' },
+      { threshold: 75, text: 'Regulatory & Site Verification...' },
       { threshold: 100, text: 'Site Assembly Complete.' }
     ];
 
@@ -176,8 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
     else if (service === 'merchandise') { baseRateNaira = 70000; baseWeeks = 3; }
 
     let locationMult = 1.0;
-    if (location === 'maitama' || location === 'asokoro') locationMult = 1.25;
-    else if (location === 'guzape' || location === 'katampe') locationMult = 1.15;
+    if (location === 'maitama' || location === 'asokoro' || location === 'lekki') locationMult = 1.25;
+    else if (location === 'guzape' || location === 'katampe' || location === 'vi') locationMult = 1.18;
+    else if (location === 'interstate') locationMult = 1.20;
 
     let priorityMult = priority === 'express' ? 1.2 : 1.0;
 
@@ -201,10 +202,10 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="background: var(--bg-subtle); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-teal); margin-bottom: 1.5rem;">
             <p style="margin-bottom:0.5rem;"><strong>Estimated Budget Range:</strong> <span style="color: var(--arctic-bright); font-weight:700;">${priceOutput.textContent}</span></p>
             <p style="margin-bottom:0.5rem;"><strong>Projected Timeline:</strong> ${durationOutput.textContent}</p>
-            <p style="margin-bottom:0;"><strong>Location:</strong> Abuja FCT Zone</p>
+            <p style="margin-bottom:0;"><strong>Nationwide Execution:</strong> Operating Desks in Abuja & Lagos</p>
           </div>
           <p style="color: var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">
-            Our senior engineering desk at Penplot Partners Construction will review your brief details and schedule a site consultation.
+            Our senior engineering team at Penplot Partners Construction will review your brief details and schedule a site consultation in your region.
           </p>
           <button class="btn btn-primary" style="width:100%" onclick="closeModal(); document.getElementById('contact').scrollIntoView({behavior:'smooth'});">
             Proceed to Request Official Site Consultation <i class="fas fa-arrow-right"></i>
@@ -238,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
   portfolioCards.forEach(card => {
     card.addEventListener('click', () => {
       const title = card.querySelector('.portfolio-title')?.textContent || 'Project Showcase';
-      const loc = card.querySelector('.portfolio-location')?.textContent || 'Abuja FCT';
+      const loc = card.querySelector('.portfolio-location')?.textContent || 'Nigeria';
       const imgSrc = card.querySelector('img')?.getAttribute('src') || '';
 
       const modalTitle = document.getElementById('modalTitle');
