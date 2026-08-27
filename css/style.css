@@ -665,6 +665,17 @@ button { cursor: pointer; }
   flex-shrink: 0;
 }
 
+/* Regulatory Accreditation Card Hover Effects */
+.accreditation-card {
+  transition: all var(--transition-normal);
+}
+
+.accreditation-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--arctic-bright) !important;
+  box-shadow: 0 10px 30px var(--teal-glow) !important;
+}
+
 /* --------------------------------------------------------------------------
    9. SERVICES ARM SHOWCASE (SERVICES A, B, C, D)
    -------------------------------------------------------------------------- */
@@ -1082,13 +1093,13 @@ button { cursor: pointer; }
   .hero-grid, .about-grid, .service-card-box, .estimator-grid, .contact-grid {
     grid-template-columns: 1fr;
   }
-  .portfolio-grid, .tracker-grid, .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .portfolio-grid, .tracker-grid, .footer-grid, .accreditation-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 }
 
 @media (max-width: 768px) {
-  .portfolio-grid, .tracker-grid, .footer-grid, .about-features-grid {
-    grid-template-columns: 1fr;
+  .portfolio-grid, .tracker-grid, .footer-grid, .about-features-grid, .accreditation-grid {
+    grid-template-columns: 1fr !important;
   }
 }
