@@ -302,9 +302,81 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Modal Helpers
+  // Modal Helpers & Partner Bio Modal Logic
   const infoModal = document.getElementById('infoModal');
   const closeModalBtn = document.getElementById('closeModalBtn');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalBody = document.getElementById('modalBody');
+
+  const partnerBios = {
+    femi: {
+      name: "Femi Ibrahim Sheleru",
+      title: "Lead Partner | Quantity Surveyor & Supply Chain Management Specialist",
+      credentials: "QSRBN Registered Quantity Surveyor • Certified PMP® (PMI)",
+      bio: `
+        <p><strong>Femi Ibrahim Sheleru</strong> is an accomplished and registered Quantity Surveyor and certified Project Management Professional with the Project Management Institute with extensive experience in construction cost management, project planning, contract administration, and infrastructure development. Over the course of his career, he has successfully applied his technical expertise to ensure efficient resource utilization, cost control, and value-driven project delivery.</p>
+        <br>
+        <p>Building on this strong foundation, Femi has transitioned into supply chain management and currently serves as a Supply Chain Manager with Centre for Integrated Health Programs. In this role, he oversees procurement, logistics, and supply chain operations that support critical health programs and interventions. His unique blend of technical, operational, and strategic management skills enables him to optimize processes, strengthen systems, and ensure the timely availability of essential commodities and services.</p>
+        <br>
+        <p>Femi is recognized for his professionalism, leadership, analytical thinking, and commitment to operational excellence. He is passionate about leveraging efficient supply chain systems and sound resource management practices to improve organizational performance and contribute to sustainable development outcomes.</p>
+      `
+    },
+    mustapha: {
+      name: "Engr. Mustapha A. Bello",
+      title: "Partner | Head of Civil & Structural Engineering",
+      credentials: "COREN Registered Engineer • Member IAENG",
+      bio: `
+        <p><strong>Engr. Mustapha A. Bello</strong> is a distinguished Civil and Structural Engineer registered with the Council for the Regulation of Engineering in Nigeria (COREN) and a full member of the International Association of Engineers (IAENG).</p>
+        <br>
+        <p>With over 15 years of industry leadership in structural analysis, heavy soil mechanics, foundation engineering, and civil highway design, Engr. Bello leads Penplot's structural integrity audits and construction site engineering teams across Abuja and Lagos operating zones.</p>
+        <br>
+        <p>He is committed to upholding rigorous safety standards, modern concrete technologies, and environmental compliance on all civil works and multi-story estate developments.</p>
+      `
+    },
+    david: {
+      name: "Arc. David O. Adeleke",
+      title: "Partner | Architectural Design & Project Planning",
+      credentials: "Principal Architect • Project Planning Lead",
+      bio: `
+        <p><strong>Arc. David O. Adeleke</strong> brings over a decade of expertise in architectural design, masterplanning, and urban development across Nigeria.</p>
+        <br>
+        <p>As Head of Architectural Design & Project Planning at Penplot Partners, he directs conceptual space planning, 3D visualization, and regulatory permit tracking with urban planning boards including FCDA (Abuja) and LASPPPA (Lagos).</p>
+        <br>
+        <p>He also coordinates Penplot's general consumable supplies arm, ensuring high-tensile steel rebars, cement batches, and heavy machinery logistics arrive at project sites on schedule.</p>
+      `
+    }
+  };
+
+  const partnerImages = {
+    femi: 'assets/images/Femi Sheleru.jpeg',
+    mustapha: 'assets/images/partner_mustapha_bello.png',
+    david: 'assets/images/partner_david_adeleke.png'
+  };
+
+  const teamRefCards = document.querySelectorAll('.team-ref-card');
+  teamRefCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const key = card.getAttribute('data-partner');
+      const partner = partnerBios[key];
+      const imgSrc = partnerImages[key];
+      if (partner && infoModal && modalTitle && modalBody) {
+        modalTitle.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 1.25rem; margin-bottom: 0.5rem;">
+            <img src="${imgSrc}" alt="${partner.name}" style="width: 65px; height: 65px; border-radius: 50%; object-fit: cover; border: 2px solid var(--arctic-bright); box-shadow: 0 0 15px var(--teal-glow); flex-shrink: 0;">
+            <div>
+              <span style="color: var(--arctic-bright); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; display: block; font-weight: 700;">${partner.credentials}</span>
+              <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin: 0; color: #FFFFFF;">${partner.name}</h3>
+            </div>
+          </div>
+        `;
+        modalBody.innerHTML = `
+          <div style="color: var(--arctic-bright); font-weight: 600; font-size: 0.92rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.6rem;">${partner.title}</div>
+          <div style="line-height: 1.8; color: var(--text-muted); font-size: 0.95rem;">${partner.bio}</div>
+        `;
+        window.openModal();
+      }
+    });
+  });
 
   window.openModal = () => infoModal?.classList.add('active');
   window.closeModal = () => infoModal?.classList.remove('active');

@@ -1089,17 +1089,196 @@ button { cursor: pointer; }
   color: #FFFFFF;
 }
 
+/* --------------------------------------------------------------------------
+   10. MEET OUR PARTNERS - EXACT REFERENCE MATCH (DUOTONE SEAMLESS BAR)
+   -------------------------------------------------------------------------- */
+.team-ref-section {
+  padding: 5rem 0;
+  background: var(--bg-main);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.team-ref-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.team-ref-title {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -1px;
+  margin-bottom: 0.5rem;
+}
+
+.team-ref-title span {
+  font-weight: 800;
+  position: relative;
+}
+
+.team-ref-title-line {
+  width: 60px;
+  height: 4px;
+  margin: 0.5rem auto 0;
+  background: linear-gradient(90deg, #6366F1, #EC4899, #14B8A6);
+  border-radius: 2px;
+}
+
+/* Seamless 3-Card Row Container with Zero Gap */
+.team-ref-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+}
+
+.team-ref-card {
+  position: relative;
+  height: 520px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #0A0D11;
+}
+
+/* Background Portrait Image */
+.team-ref-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+/* Duotone Color Overlays inspired by reference photo */
+.team-ref-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  transition: opacity 0.4s ease;
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+}
+
+/* Card 1: Purple / Indigo Tint */
+.card-duotone-1::before {
+  background: linear-gradient(180deg, #4338CA 0%, #1E1B4B 100%);
+}
+
+/* Card 2: Magenta / Pink Tint */
+.card-duotone-2::before {
+  background: linear-gradient(180deg, #BE185D 0%, #831843 100%);
+}
+
+/* Card 3: Teal / Cyan Tint */
+.card-duotone-3::before {
+  background: linear-gradient(180deg, #0F766E 0%, #134E4A 100%);
+}
+
+/* Dark Bottom Vignette Gradient for Text Contrast */
+.team-ref-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(to top, rgba(10, 13, 17, 0.95) 0%, rgba(10, 13, 17, 0.4) 45%, transparent 100%);
+}
+
+.team-ref-card:hover .team-ref-img {
+  transform: scale(1.08);
+}
+
+.team-ref-card:hover::before {
+  opacity: 0.7;
+}
+
+/* Bottom Text Overlay & Icon */
+.team-ref-details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2.25rem 2rem;
+  z-index: 4;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.team-ref-name {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #FFFFFF;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.4rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.team-ref-role {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+.team-ref-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.team-ref-card:hover .team-ref-icon {
+  background: #FFFFFF;
+  color: #0A0D11;
+  transform: translateY(-3px);
+}
+
 @media (max-width: 1024px) {
   .hero-grid, .about-grid, .service-card-box, .estimator-grid, .contact-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
   .portfolio-grid, .tracker-grid, .footer-grid, .accreditation-grid {
     grid-template-columns: repeat(2, 1fr) !important;
   }
+  .team-ref-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .team-ref-card {
+    height: 440px;
+  }
+  .team-ref-name {
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {
-  .portfolio-grid, .tracker-grid, .footer-grid, .about-features-grid, .accreditation-grid {
+  .portfolio-grid, .tracker-grid, .footer-grid, .about-features-grid, .accreditation-grid, .team-ref-grid {
     grid-template-columns: 1fr !important;
+  }
+  .team-ref-grid {
+    border-radius: 16px;
+  }
+  .team-ref-card {
+    height: 460px;
   }
 }
